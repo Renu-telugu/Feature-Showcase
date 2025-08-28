@@ -4,7 +4,7 @@ export default function FeatureCard({ index, item, isActive, onClick }) {
   return (
     <button
       onClick={onClick}
-      className={`group relative w-full text-left py-4 pl-6 pr-2 transition-colors ${isActive ? 'font-semibold text-gray-900' : 'text-gray-500 hover:text-gray-800'}`}
+      className={`group relative w-full text-left py-4 sm:py-5 pl-6 pr-3 transition-colors ${isActive ? 'font-semibold text-gray-900' : 'text-gray-500 hover:text-gray-800'}`}
       aria-current={isActive}
     >
       <span
@@ -13,7 +13,16 @@ export default function FeatureCard({ index, item, isActive, onClick }) {
       />
       <div className="flex items-center gap-3">
         <span className={`text-sm ${isActive ? 'text-brand-blue' : 'text-gray-400'}`}>Feature {index + 1} :</span>
-        <span>{item.rightLabel || item.heading}</span>
+        <span className="text-sm sm:text-base">{item.rightLabel || item.heading}</span>
+      </div>
+      {/* Mobile accordion: reveal details when active */}
+      <div className={`mt-2 sm:mt-3 max-[1024px]:block min-[1025px]:hidden overflow-hidden transition-[max-height,opacity] duration-300 ${isActive ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'}`}>
+        <p className="mt-1 text-sm text-gray-700 font-medium">{item.heading}</p>
+        <ul className="mt-2 space-y-1 text-sm text-gray-600 list-disc pl-5">
+          {item.body.map((line, i) => (
+            <li key={i}>{line}</li>
+          ))}
+        </ul>
       </div>
     </button>
   )

@@ -66,12 +66,12 @@ export default function FeatureShowcase() {
       {/* Wrapper that creates a long scroll region to step through 5 features */}
       <div ref={stickyRef} className="relative" style={{ height: '520vh' }}>
         <div className="sticky top-0">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 px-4 sm:px-6 md:px-8 py-10 md:py-14 bg-white">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 min-[551px]:grid-cols-2 min-[1025px]:grid-cols-3 gap-8 lg:gap-12 px-4 sm:px-6 md:px-8 py-8 md:py-12 bg-white">
             {/* Left pane */}
-            <div className="flex flex-col justify-center">
+            <div className="order-2 hidden min-[1025px]:flex flex-col justify-center">
               <p className="text-brand-blue font-medium">{`Feature No.${active.id} -`}</p>
-              <h2 className="mt-6 text-2xl md:text-3xl font-semibold tracking-wide">{active.heading}</h2>
-              <ul className="mt-6 space-y-2 text-sm md:text-base text-gray-600 list-disc pl-5">
+              <h2 className="mt-3 md:mt-6 text-xl sm:text-2xl md:text-3xl font-semibold tracking-wide">{active.heading}</h2>
+              <ul className="mt-4 md:mt-6 space-y-2 text-base md:text-base text-gray-600 list-disc pl-5">
                 {active.body.map((line, i) => (
                   <li key={i}>{line}</li>
                 ))}
@@ -80,8 +80,8 @@ export default function FeatureShowcase() {
             </div>
 
             {/* Middle phone */}
-            <div className="flex items-center justify-center">
-              <div className="relative w-[220px] sm:w-[260px] md:w-[300px] aspect-[9/19.5] rounded-[42px] shadow-phone overflow-hidden" aria-label="Feature phone preview">
+            <div className="order-2 min-[551px]:order-1 min-[1025px]:order-2 flex items-center justify-center">
+              <div className="relative w-[200px] sm:w-[240px] md:w-[300px] aspect-[9/19.5] rounded-[42px] shadow-phone overflow-hidden" aria-label="Feature phone preview">
                 <div className="absolute inset-[10px] rounded-[36px] bg-white/5">
                   <div className="absolute inset-0">
                     {/* Gradient fallback (behind) */}
@@ -102,9 +102,9 @@ export default function FeatureShowcase() {
             </div>
 
             {/* Right feature list */}
-            <div className="flex flex-col justify-center">
-              <h3 className="text-lg font-semibold mb-4">Feature Showcase</h3>
-              <div className="divide-y divide-gray-100">
+            <div className="order-1 min-[551px]:order-2 min-[1025px]:order-3 flex flex-col justify-center">
+              <h3 className="text-lg font-semibold mb-3 lg:mb-4">Feature Showcase</h3>
+              <div className="rounded-xl bg-gray-50 lg:bg-transparent divide-y divide-gray-100">
                 {features.map((f, i) => (
                   <FeatureCard
                     key={f.id}
