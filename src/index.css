@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* App base styles */
+:root {
+  color-scheme: light;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-white text-gray-800 antialiased;
+}
+
+.phone-mock {
+  border-radius: 42px;
+  background: linear-gradient(135deg, #ff6a88 0%, #ff99ac 25%, #a18cd1 60%, #6025f5 100%);
+}
+
+.sticky-section {
+  contain: paint;
+}
+
+
