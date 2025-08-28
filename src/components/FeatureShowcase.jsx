@@ -4,15 +4,15 @@ import FeatureCard from './FeatureCard.jsx'
 import ArrowNav from './ArrowNav.jsx'
 
 export default function FeatureShowcase() {
-  const [activeIndex, setActiveIndex] = useState(1) // 0..4, start at 1 to match screenshot
+  const [activeIndex, setActiveIndex] = useState(0) // default to Feature 1
   const sectionRef = useRef(null)
   const stickyRef = useRef(null)
   const isAutoScrolling = useRef(false)
 
   const active = useMemo(() => features[activeIndex], [activeIndex])
 
-  const goPrev = () => setActiveIndex((i) => Math.max(0, i - 1))
-  const goNext = () => setActiveIndex((i) => Math.min(features.length - 1, i + 1))
+  const goPrev = () => setActiveIndex((i) => (i - 1 + features.length) % features.length)
+  const goNext = () => setActiveIndex((i) => (i + 1) % features.length)
   const goTo = (i) => setActiveIndex(i)
 
   // Auto-advance via scroll when section is sticky/in view
